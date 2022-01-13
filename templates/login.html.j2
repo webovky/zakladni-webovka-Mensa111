@@ -1,0 +1,21 @@
+{% extends "base.html.j2" %}
+
+{%block title%}Login{%endblock%}
+
+{% block obsah %}
+
+<h3 style="text-align:left">Login</h3>
+
+<form method="post">
+   login:<br>
+   <input type="text"     name="nick" > <br>
+   passwd:<br>
+   <input type="password" name="pswd" ><br>
+   <input type="submit" >
+   <button>Přihlásit mě</button>
+
+</form>
+
+
+{% endblock obsah %}
+
