@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block title%}Titulek{%endblock%}</title>
+    
+    <link rel="stylesheet" 
+          href="{{ url_for('static', filename='styles.css')}}">
+
+</head>
+
+<body>
+
+<ul>
+    <li><a href="{{ url_for('index') }}">Hlavní stránka</a></li>
+    <li><a href="{{ url_for('protein') }}">Protein</a></li>
+    <li><a href="{{ url_for('aminokyseliny') }}">Aminokyseliny</a></li>
+    <li><a href="{{ url_for('anabolizator') }}">Anabolizátory</a></li>
+    <li><a href="{{ url_for('login') }}">Loging</a></li>
+    
+</ul>
+
+<p class="login">
+{% if 'user' in session %}
+Jsi přihlášen jako <strong>{{ session.get('user') }}</strong>. 
+<a href="{{ url_for('logout') }}">Odhlásit!</a>
+{% else %}
+Hrůza!!! Nejsi přihlášen. 
+<a href="{{ url_for('login') }}">Přihlásit!</a>
+{% endif %}
+</p>
+
+
+{% for category, message in get_flashed_messages(with_categories=true) %}
+    <p class="message {{ category }}">{{ message }}</p>
+{% endfor %}
+
+
+{% block obsah %}
+
+<h1>SPORTOVNÍ VÝŽIVA</h1>
+
+<p>Berete fitness a posilování vážně? Pak Vaše svaly dostávají 
+při každém tréninku určitě pořádně zabrat a zaslouží si kvalitní 
+sportovní výživu, která jim dodá všechny potřebné látky. Vyberte 
+si mezi aminokyselinami, proteiny, sacharidy, stimulanty a energizéry
+ ideální kombinaci na míru svým tréninkovým požadavkům. 
+</p>
+
+
+{% endblock obsah %} 
+
+</body>
+</html>
+
